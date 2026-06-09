@@ -2,6 +2,15 @@
 
 Express + MongoDB API for the study plan tracker: phone auth, progress, analytics, knowledge notes (summary + per-task subtopics), and file uploads.
 
+## Where to deploy
+
+| Repo | Platform | URL pattern |
+|------|----------|-------------|
+| **This repo (backend)** | [Render](https://render.com) | `https://*.onrender.com` |
+| [Frontend repo](https://github.com/kammari-venkatesh/system-design-todo) | [Vercel](https://vercel.com) | `https://*.vercel.app` |
+
+**Do not deploy this backend on Vercel** — it will crash (`FUNCTION_INVOCATION_FAILED`). See [DEPLOY.md](./DEPLOY.md) for step-by-step instructions.
+
 ## Requirements
 
 - Node.js 18+
@@ -58,6 +67,8 @@ PUBLIC_URL=https://your-service.onrender.com
 6. After first deploy, run **Shell** command: `npm run seed`
 
 Or use the included `render.yaml` Blueprint.
+
+Full walkthrough: **[DEPLOY.md](./DEPLOY.md)**
 
 ## Production checklist
 

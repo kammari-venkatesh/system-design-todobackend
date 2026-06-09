@@ -57,11 +57,14 @@ app.use(errorHandler);
 connectDB()
   .then(async () => {
     await syncUserIndexes();
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${PORT} (${process.env.NODE_ENV || 'development'})`);
     });
   })
   .catch((err) => {
-    console.error('Failed to start server:', err);
+    console.error('Failed to start server:', err.message || err);
+    if (process.env.NODE_ENV === 'production') {
+      console.error('Check MONGO_URI, JWT_SECRET, FRONTEND_URL, and PUBLIC_URL in your host env settings.');
+    }
     process.exit(1);
   });
