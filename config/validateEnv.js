@@ -15,11 +15,6 @@ export function validateEnv() {
     }
 
     const warnings = [];
-    if (!process.env.FRONTEND_URL) {
-      warnings.push(
-        'FRONTEND_URL is not set — the API will start but browser requests from your frontend will be blocked by CORS until you add it (e.g. https://your-app.vercel.app)'
-      );
-    }
     if (!process.env.PUBLIC_URL) {
       warnings.push(
         'PUBLIC_URL is not set — note attachment URLs may be incorrect. On Render, RENDER_EXTERNAL_URL is used automatically when available.'

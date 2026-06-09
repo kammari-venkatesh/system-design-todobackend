@@ -11,6 +11,7 @@ import planRoutes from './routes/plan.js';
 import progressRoutes from './routes/progress.js';
 import analyticsRoutes from './routes/analytics.js';
 import searchRoutes from './routes/search.js';
+import { getCorsConfig } from './config/cors.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 
 validateEnv();
@@ -24,21 +25,18 @@ if (isProd) {
   app.set('trust proxy', 1);
 }
 
-const allowedOrigins = process.env.FRONTEND_URL
-  ? process.env.FRONTEND_URL.split(',').map((s) => s.trim()).filter(Boolean)
-  : ['http://localhost:5173', 'http://localhost:4173'];
+const { configured: corsOrigins, isAllowed: isOriginAllowed } = getCorsConfig(isProd);
 
-if (isProd && process.env.FRONTEND_URL) {
-  console.log(`CORS allowed origins: ${allowedOrigins.join(', ')}`);
-} else if (isProd) {
-  console.warn('CORS: FRONTEND_URL not set — only non-browser requests will succeed until you configure it');
+if (isProd) {
+  console.log(
+    `CORS: ${corsOrigins.join(', ') || 'none configured'} + Vercel (*.vercel.app) deployments`
+  );
 }
 
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin) return callback(null, true);
-      if (!isProd || allowedOrigins.includes(origin)) return callback(null, true);
+      if (isOriginAllowed(origin)) return callback(null, true);
       callback(new Error('Not allowed by CORS'));
     },
     credentials: true,

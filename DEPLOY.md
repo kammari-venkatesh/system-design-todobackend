@@ -31,7 +31,7 @@
 | `NODE_ENV` | `production` |
 | `MONGO_URI` | your Atlas URI |
 | `JWT_SECRET` | long random string (32+ chars) |
-| `FRONTEND_URL` | `https://your-app.vercel.app` *(required for browser login)* |
+| `FRONTEND_URL` | `https://your-app.vercel.app` or `https://*.vercel.app` *(auto-default)* |
 
 Optional (auto on Render):
 
@@ -59,7 +59,7 @@ Import `render.yaml` via Render **Blueprints** for the same setup. You still mus
 2. Framework: **Vite** · Output: `dist`
 3. Environment variable:
    ```
-   VITE_API_URL=https://YOUR-SERVICE.onrender.com
+   VITE_API_URL=https://system-design-todobackend-1.onrender.com
    ```
    No trailing slash.
 4. Redeploy frontend after setting the variable.
