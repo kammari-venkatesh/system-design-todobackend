@@ -49,6 +49,8 @@ const knowledgeNoteSchema = new mongoose.Schema(
     week: { type: Number },
     phase: { type: Number },
     topic: { type: String, default: '' },
+    subtopic: { type: String, default: '' },
+    taskIndex: { type: Number },
     title: { type: String, default: '' },
     summary: { type: String, default: '' },
     pinned: { type: Boolean, default: false },
