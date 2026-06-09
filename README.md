@@ -36,8 +36,8 @@ API runs at `http://localhost:5000`. Health check: `GET /api/health`.
 | `JWT_SECRET` | Yes | Secret for signing JWT tokens |
 | `PORT` | No | Server port (default `5000`) |
 | `NODE_ENV` | Prod | Set to `production` when deployed |
-| `FRONTEND_URL` | Prod | Comma-separated allowed CORS origins |
-| `PUBLIC_URL` | Prod | Public backend URL for upload links |
+| `FRONTEND_URL` | Prod | Your Vercel frontend URL (required for browser CORS) |
+| `PUBLIC_URL` | Prod | Auto-set on Render via `RENDER_EXTERNAL_URL` if omitted |
 
 ## Scripts
 

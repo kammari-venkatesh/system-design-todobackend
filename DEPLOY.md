@@ -31,12 +31,17 @@
 | `NODE_ENV` | `production` |
 | `MONGO_URI` | your Atlas URI |
 | `JWT_SECRET` | long random string (32+ chars) |
-| `FRONTEND_URL` | `https://your-app.vercel.app` |
-| `PUBLIC_URL` | `https://system-design-todobackend.onrender.com` |
+| `FRONTEND_URL` | `https://your-app.vercel.app` *(required for browser login)* |
 
-Set `PUBLIC_URL` to your actual Render service URL (shown after first deploy).
+Optional (auto on Render):
 
-5. Click **Create Web Service** and wait for deploy.
+| Key | Notes |
+|-----|-------|
+| `PUBLIC_URL` | Auto-set from `RENDER_EXTERNAL_URL` if omitted |
+
+5. **Render build settings** (if not using Blueprint):
+   - **Build Command:** `npm ci` (not `yarn`)
+   - **Start Command:** `npm start`
 6. Open **Shell** in Render and run once:
    ```bash
    npm run seed
