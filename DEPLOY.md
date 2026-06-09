@@ -81,6 +81,7 @@ If you deployed `system-design-todobackend` on Vercel:
 
 | Symptom | Fix |
 |---------|-----|
+| `Missing script: "start"` on Render | Wrong repo — connect **`system-design-todobackend`**, not `system-design-todo`. Frontend goes on **Vercel** only. |
 | `FUNCTION_INVOCATION_FAILED` on Vercel | Backend is on wrong platform — use Render |
 | Deploy fails on Render | Check `MONGO_URI`, Atlas IP whitelist |
 | CORS error in browser | Set `FRONTEND_URL` to exact Vercel origin |
